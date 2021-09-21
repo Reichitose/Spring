@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+        包含关系的配置文件
+
+    spring total用来表示主配置文件,用来包含其他的配置文件
+            这种主配置文件一般是不定义对象的
+
+            包含所用的标签叫做import
+            语法
+            <import resource="其他配置文件的路径"/>
+                关键字"classpath" 表示类路径,就是target下class之后的,即class文件所在的目录
+                在spring的配置文件中要指定其他文件的位置
+                就需要使用classpath告诉spring到哪去加载和读取文件
+        -->
+
+
+    <!--加载文件列表-->
+    <import resource="classpath:ba06/Spring_School.xml"/>
+    <import resource="classpath:ba06/Spring_Student.xml"/>
+
+
+    <!--还可以在包含关系文件的配置文件里使用通配符*-->
+    <import resource="classpath:/ba06/Spring_*.xml"/>
+    <!--此处注意,要避免总配置文件的命名格式不能包含在通配符的范围内
+        否则会自我加载,造成死循环
+        且必须放在resources文件夹下的某个文件夹内,而不能凡在根目录下
+        否则不能使用通配符
+    -->
+
+
+
+
+
+
+</beans>
