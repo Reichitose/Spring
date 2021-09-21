@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间，格式：com.reiuy.dao.XxxDao-->
+<mapper namespace="com.reiuy.dao.StudentDao">
+    <!--id 需要执行的sql语句的唯一表示,要求使用接口中的方法名 例如selectStudents-->
+    <!--resultType 只有select语句中有，指定返回值的类型的全限定名名称 例如 com.reiuy.domain.Student-->
+    <insert id="insertStudent">
+        insert into student values (#{id},#{name},#{email},#{age})
+    </insert>
+
+
+    <select id="selectStudent" resultType="com.reiuy.entity.Student">
+        select * from student order by id
+    </select>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--
+        声明组件扫描器component-scan,组件就是说java对象
+        base-package 指定注解在你的项目里的包名
+        component-scan的工作方式:
+                spring会扫描遍历base-package指定的包
+                把包中和子包中所有类,找到类中的注解按注解的
+                功能创建对象和给属性赋值
+
+
+        在添加component-scan后,配置文件会发生变化
+           1.会加入一个新的约束文件spring-context.xsd
+           2.给这个新的约束文件起个命名空间的名称
+           组件扫描器前的context就是来自于上面的命名空间
+    -->
+
+
+    <context:component-scan base-package="com.reiuy.ba05"/>
+
+    <!--
+        指定多个包扫描的三种方式
+        1.重复多次执行组件扫描器,指定不同的包
+        2.使用分隔符,或者;来分隔开多个包名
+        <context:component-scan base-package="com.reiuy.ba01,com.reiuy.ba02"/>
+        3.指定一个父包,但是不建议指定到com包,这会导致大量的无意义扫描浪费时间
+        <context:component-scan base-package="com.reiuy"/>
+    -->
+
+    <!--加载属性配置文件,用来在注解中使用${}-->
+    <context:property-placeholder location="classpath:test.properties"/>
+
+
+
+</beans>
